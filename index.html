@@ -51,34 +51,27 @@
 							</head>
 							<body>
 
-							<div class="slideshow-container">
+							<div class="slideshow-container" data-cycle="2000">
 
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic01.jpg" alt="" data-position="center center">
-							</div>
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic02.jpg" alt="" data-position="center center">
-							</div>
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic03.jpg" alt="" data-position="center center">
-							</div>
-
-							</div>
-							<br>
-
-							<div style="text-align:center">
-							<span class="dot"></span> 
-							<span class="dot"></span> 
-							<span class="dot"></span> 
-							</div>
+								<div class="mySlides fade">
+									<img src="images/pic01.jpg" alt="" data-position="center center">
+								</div>
+								
+								<div class="mySlides fade">
+									<img src="images/pic02.jpg" alt="" data-position="center center">
+								</div>
+								
+								<div class="mySlides fade">
+									<img src="images/pic03.jpg" alt="" data-position="center center">
+								</div>
+								
+								</div>
 							<!--<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
 							-->
 							<div class="content">
 								<div class="inner">
 									<h2>Work Experience</h2>
-									<p>description 1</p>
+									<!--<p>description 1</p>-->
 									<ul class="actions">
 										<li><a href="generic.html" class="button">Learn more</a></li>
 									</ul>
@@ -89,38 +82,33 @@
 						</style>
 							</head>
 							<body>
-
-							<div class="slideshow-container">
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic01.jpg" alt="" data-position="top center">
-							</div>
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic02.jpg" alt="" data-position="top center">
-							</div>
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic03.jpg" alt="" data-position="top center">
-							</div>
-
-							</div>
-							<br>
-
-							<div style="text-align:center">
-							<span class="dot"></span> 
-							<span class="dot"></span> 
-							<span class="dot"></span> 
-							</div>
+								
 							<!--<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
 							-->
 								<div class="content">
 								<div class="inner">
 									<h2>Projects</h2>
-									<p>description 2</p>
+									<!--<p>description 2</p>-->
 									<ul class="actions">
 										<li><a href="generic.html" class="button">Learn more</a></li>
 									</ul>
+									<span class="image right"><div class="slideshow-container" data-cycle="2000"></span>
+
+										<div class="mySlides fade">
+											<img src="images/pic11.jpg" alt="" />
+											<!--<img src="images/pic11.jpg" alt="" data-position="top right">-->
+										</div>
+										<!--
+										<div class="mySlides fade">
+											<img src="images/pic11.jpg" alt="" data-position="top right">
+										</div>
+										
+										<div class="mySlides fade">
+											<img src="images/pic11.jpg" alt="" data-position="top right">
+										</div>-->
+										
+										</div>
+									
 								</div>
 							</div>
 						</section>
@@ -129,37 +117,33 @@
 							</head>
 							<body>
 
-							<div class="slideshow-container">
+							
+								<div class="slideshow-container" data-cycle="2000">
 
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic01.jpg" alt="" data-position="25% 25%">
-							</div>
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic02.jpg" alt="" data-position="25% 25%">
-							</div>
-
-							<div class="mySlides fade">
-							<class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%">
-							</div>
-
-							</div>
-							<br>
-
-							<div style="text-align:center">
-							<span class="dot"></span> 
-							<span class="dot"></span> 
-							<span class="dot"></span> 
-							</div>
+									<div class="mySlides fade">
+										<img src="images/pic21.jpg" alt="" data-position="top center">
+									</div>
+									
+									<div class="mySlides fade">
+										<img src="images/pic23.jpg" alt="" data-position="top center">
+									</div>
+										
+									<div class="mySlides fade">
+										<img src="images/pic23.jpg" alt="" data-position="top center">
+									</div>
+										
+								</div>
 							<!--<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
 							-->
 								<div class="content">
 								<div class="inner">
 									<h2>Volunteering & Hobbies</h2>
-									<p>description 3</p>
+									
+									<!--<p>description 3</p>-->
 									<ul class="actions">
 										<li><a href="generic.html" class="button">Learn more</a></li>
 									</ul>
+									
 								</div>
 							</div>
 						</section>
@@ -245,26 +229,40 @@
 			</footer>
 
 		<!-- Scripts -->
+		
 			<script>
-			var slideIndex = 0;
-			showSlides();
-			
-			function showSlides() {
-			  var i;
-			  var slides = document.getElementsByClassName("mySlides");
-			  var dots = document.getElementsByClassName("dot");
-			  for (i = 0; i < slides.length; i++) {
-				slides[i].style.display = "none";  
-			  }
-			  slideIndex++;
-			  if (slideIndex > slides.length) {slideIndex = 1}    
-			  for (i = 0; i < dots.length; i++) {
-				dots[i].className = dots[i].className.replace(" active", "");
-			  }
-			  slides[slideIndex-1].style.display = "block";  
-			  dots[slideIndex-1].className += " active";
-			  setTimeout(showSlides, 3500); // Change image every 2 seconds
-			}</script>
+			/*This slide show function is credited to https://www.w3schools.com/howto/howto_js_slideshow.asp  and stack overflow 
+			https://stackoverflow.com/questions/58455922/how-do-you-get-multiple-automatic-slideshows-on-one-page on 
+			how to make slideshows*/
+			var slideshowContainers = document.getElementsByClassName("slideshow-container");
+			/* For each container get starting variables */
+			for(let s = 0; s < slideshowContainers.length; s++) {
+				/* Read the new data attribute */        
+				var cycle = slideshowContainers[s].dataset.cycle;
+				/* Find all the child nodes with class mySlides */
+				var slides = slideshowContainers[s].querySelectorAll('.mySlides');
+				var slideIndex = 0;
+				/* Now we can cycle slides, but this recursive function must have parameters */
+				/* slides and cycle never change, those are unique for each slide container */
+				/* slideIndex will increase during each iteration */
+				showSlides(slides, slideIndex, cycle);
+			};
+
+			/* Function is alsmost same, but now it uses 3 new parameters */
+			function showSlides(slides, slideIndex, cycle) {
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				};
+				slideIndex++;
+				if (slideIndex > slides.length) {
+					slideIndex = 1
+				};
+				slides[slideIndex - 1].style.display = "block";
+				/* Calling same function, but with new parameters and cycle time */
+				setTimeout(function() {
+					showSlides(slides, slideIndex, cycle)
+				}, cycle);
+			};</script>
 			<script src="assets/js/jquery.min.js"></script>
 
 			<script src="assets/js/jquery.scrollex.min.js"></script>
