@@ -2614,6 +2614,34 @@ input, select, textarea {
 				width: 100%;
 			}
 
+			/*Slideshow*/
+			/* Slideshow container */
+
+.slideshow-container {
+    max-width: 400px;
+	float: right;
+    margin: 0 0 0 0;
+}
+
+
+.slideshow-container.left, .slideshow-container.right {
+	max-width: 50px;
+}
+
+
+.slideshow-container.left {
+	float: left;
+	margin: 0 1.5em 1em 0;
+	top: 0.25em;
+}
+
+.slideshow-container.right {
+	float: right;
+	margin: 0 0 0 0;
+	display: inline-block;
+}
+
+
 /* List */
 
 	ol {
@@ -3908,3 +3936,5 @@ input, select, textarea {
 			}
 
 		}
+		.floatRight{float:right;margin-left:20px}
+		
