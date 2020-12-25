@@ -45,8 +45,36 @@
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
+							<!--/* The dots/bullets/indicators */-->
 							
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+							</style>
+							</head>
+							<body>
+
+							<div class="slideshow-container">
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic01.jpg" alt="" data-position="center center">
+							</div>
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic02.jpg" alt="" data-position="center center">
+							</div>
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic03.jpg" alt="" data-position="center center">
+							</div>
+
+							</div>
+							<br>
+
+							<div style="text-align:center">
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							</div>
+							<!--<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+							-->
 							<div class="content">
 								<div class="inner">
 									<h2>Work Experience</h2>
@@ -58,8 +86,35 @@
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
+						</style>
+							</head>
+							<body>
+
+							<div class="slideshow-container">
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic01.jpg" alt="" data-position="top center">
+							</div>
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic02.jpg" alt="" data-position="top center">
+							</div>
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic03.jpg" alt="" data-position="top center">
+							</div>
+
+							</div>
+							<br>
+
+							<div style="text-align:center">
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							</div>
+							<!--<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
+							-->
+								<div class="content">
 								<div class="inner">
 									<h2>Projects</h2>
 									<p>description 2</p>
@@ -70,8 +125,35 @@
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
+						</style>
+							</head>
+							<body>
+
+							<div class="slideshow-container">
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic01.jpg" alt="" data-position="25% 25%">
+							</div>
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic02.jpg" alt="" data-position="25% 25%">
+							</div>
+
+							<div class="mySlides fade">
+							<class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%">
+							</div>
+
+							</div>
+							<br>
+
+							<div style="text-align:center">
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							<span class="dot"></span> 
+							</div>
+							<!--<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
+							-->
+								<div class="content">
 								<div class="inner">
 									<h2>Volunteering & Hobbies</h2>
 									<p>description 3</p>
@@ -163,7 +245,28 @@
 			</footer>
 
 		<!-- Scripts -->
+			<script>
+			var slideIndex = 0;
+			showSlides();
+			
+			function showSlides() {
+			  var i;
+			  var slides = document.getElementsByClassName("mySlides");
+			  var dots = document.getElementsByClassName("dot");
+			  for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";  
+			  }
+			  slideIndex++;
+			  if (slideIndex > slides.length) {slideIndex = 1}    
+			  for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";  
+			  dots[slideIndex-1].className += " active";
+			  setTimeout(showSlides, 3500); // Change image every 2 seconds
+			}</script>
 			<script src="assets/js/jquery.min.js"></script>
+
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
