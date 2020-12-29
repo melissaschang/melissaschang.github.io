@@ -72,7 +72,7 @@ void draw() {
 
 
 if (j==0){ //once 'b' is pressed, this message will dissapear, as j==1, (this message is only meant to be seen once at the beginning of the game
-  textSize(20);
+  /*textSize(20);
   text("Don't run into the wall, and collect", 50, 200); //instructions
   text("as many purple squares as you can!", 50, 235);
   text("Be VERY careful not to run into your ", 50, 270);
@@ -81,6 +81,7 @@ if (j==0){ //once 'b' is pressed, this message will dissapear, as j==1, (this me
   textSize(35);
   text("Press 'b' to begin", 100, 380);
   textSize(20);
+  */
   /*text("Press 'm' to mute music", 300, 600);
   
   text("Press 'p' to play music again later", 300, 624);*/
