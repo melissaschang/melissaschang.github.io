@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f1e8" />
+  <meta name="description" content="A private 3,000-hour Japanese study timer and reward tracker." />
+  <title>Japanese 3000 — Study Timer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="authScreen" class="auth-shell">
+    <section class="auth-card">
+      <p class="eyebrow">日本語 • 3,000 HOUR PROJECT</p>
+      <h1>Japanese Study Timer</h1>
+      <p class="auth-copy">Sign in to sync your study hours across your devices.</p>
+
+      <div id="configWarning" class="warning-box" hidden>
+        <strong>Supabase setup needed.</strong>
+        <span>Open <code>config.js</code> and add your project URL and publishable key first.</span>
+      </div>
+
+      <form id="authForm" class="auth-form">
+        <label>
+          Email
+          <input id="emailInput" type="email" autocomplete="email" required placeholder="you@example.com" />
+        </label>
+        <label>
+          Password
+          <input id="passwordInput" type="password" autocomplete="current-password" required placeholder="••••••••" />
+        </label>
+        <button id="signInBtn" class="primary-btn" type="submit">Sign in</button>
+        <button id="signUpBtn" class="secondary-btn" type="button">Create my account</button>
+        <p id="authMessage" class="auth-message" aria-live="polite"></p>
+      </form>
+
+      <p class="privacy-note">Your password is handled by Supabase Auth. It is never stored in this website's source code.</p>
+    </section>
+  </main>
+
+  <main id="appShell" class="app-shell" hidden>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">日本語 • 3,000 HOUR PROJECT</p>
+        <h1>Japanese Study Timer</h1>
+      </div>
+      <div class="top-actions">
+        <span id="syncStatus" class="sync-status">Cloud synced</span>
+        <button id="settingsBtn" class="icon-btn" type="button" aria-label="Open settings">⚙</button>
+      </div>
+    </header>
+
+    <section class="hero-card">
+      <div class="timer-wrap">
+        <p id="timerLabel" class="timer-label">READY TO STUDY</p>
+        <div id="timer" class="timer">00:00:00</div>
+        <div class="timer-actions">
+          <button id="startPauseBtn" class="primary-btn" type="button">Start timer</button>
+          <button id="finishBtn" class="secondary-btn" type="button" disabled>Finish session</button>
+        </div>
+        <p id="runningNote" class="running-note">Your progress is saved to your private account.</p>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <p class="stat-label">Total studied</p>
+        <p id="totalHours" class="stat-value">0.0 h</p>
+        <p id="goalPercent" class="stat-sub">0.0% of 3,000 h</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">This week</p>
+        <p id="weekHours" class="stat-value">0.0 h</p>
+        <p id="weekRemaining" class="stat-sub">9.62 h to goal</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Next reward</p>
+        <p id="nextRewardHours" class="stat-value">50 h</p>
+        <p id="nextRewardText" class="stat-sub">Sweet treat 🍰</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Projected finish</p>
+        <p id="projection" class="stat-value stat-value-small">—</p>
+        <p id="pace" class="stat-sub">Build a study streak first</p>
+      </article>
+    </section>
+
+    <section class="progress-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE LONG GAME</p>
+          <h2>3,000 hours in 6 years</h2>
+        </div>
+        <p id="remainingText" class="muted">3,000 h remaining</p>
+      </div>
+      <div class="big-progress-track" aria-label="Overall Japanese study progress">
+        <div id="bigProgressBar" class="big-progress-fill"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="startDateText">Start: —</span>
+        <span id="targetDateText">Target: —</span>
+      </div>
+    </section>
+
+    <section class="reward-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">REWARD LADDER</p>
+          <h2>Make the hours feel real</h2>
+        </div>
+        <span id="unlockedCount" class="reward-count">0 unlocked</span>
+      </div>
+      <div id="rewardRail" class="reward-rail" aria-label="Reward milestones"></div>
+      <div class="reward-key">
+        <span><i class="dot treat"></i> Every 50 h: sweet treat</span>
+        <span><i class="dot dinner"></i> Every 500 h: celebratory dinner</span>
+      </div>
+    </section>
+
+    <section class="history-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">RECENT SESSIONS</p>
+          <h2>Your study log</h2>
+        </div>
+        <button id="manualBtn" class="text-btn" type="button">+ Add time manually</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+      <p id="emptyHistory" class="empty-state">No sessions yet. Your first hour starts with one click.</p>
+    </section>
+
+    <footer>
+      <div>
+        <p>Cloud sync is the primary copy. You can also export a JSON backup.</p>
+        <button id="signOutBtn" class="text-btn" type="button">Sign out</button>
+      </div>
+      <div class="footer-actions">
+        <button id="exportBtn" class="text-btn" type="button">Export backup</button>
+        <label class="text-btn file-label">Import backup<input id="importInput" type="file" accept=".json,application/json" /></label>
+      </div>
+    </footer>
+  </main>
+
+  <dialog id="manualDialog">
+    <form method="dialog" class="dialog-card" id="manualForm">
+      <div class="dialog-title-row">
+        <h2>Add study time</h2>
+        <button class="icon-btn close-dialog" value="cancel" type="submit" aria-label="Close">×</button>
+      </div>
+      <label>Date<input id="manualDate" type="date" required /></label>
+      <label>Hours<input id="manualHours" type="number" min="0.01" max="24" step="0.01" placeholder="1.5" required /></label>
+      <label>Note <span class="optional">(optional)</span><input id="manualNote" type="text" maxlength="120" placeholder="Genki, listening, tutoring…" /></label>
+      <div class="dialog-actions">
+        <button value="cancel" class="secondary-btn" type="submit">Cancel</button>
+        <button id="manualSaveBtn" class="primary-btn" type="button">Add time</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-title-row">
+        <h2>Tracker settings</h2>
+        <button class="icon-btn close-dialog" value="cancel" type="submit" aria-label="Close">×</button>
+      </div>
+      <label>Goal hours<input id="goalHoursInput" type="number" min="1" max="100000" step="1" value="3000" /></label>
+      <label>Weekly target<input id="weeklyTargetInput" type="number" min="0.1" max="168" step="0.01" value="9.62" /></label>
+      <label>Start date<input id="startDateInput" type="date" /></label>
+      <label>Target date<input id="targetDateInput" type="date" /></label>
+      <div class="dialog-actions">
+        <button value="cancel" class="secondary-btn" type="submit">Cancel</button>
+        <button id="settingsSaveBtn" class="primary-btn" type="button">Save settings</button>
+      </div>
+      <button id="resetBtn" class="danger-link" type="button">Reset all tracker data</button>
+    </form>
+  </dialog>
+
+  <dialog id="rewardDialog">
+    <div class="dialog-card reward-dialog">
+      <div id="rewardEmoji" class="reward-emoji">🍰</div>
+      <p class="eyebrow">REWARD UNLOCKED</p>
+      <h2 id="rewardTitle">50 hours!</h2>
+      <p id="rewardMessage">You earned a sweet treat.</p>
+      <button id="rewardCloseBtn" class="primary-btn" type="button">Nice ✨</button>
+    </div>
+  </dialog>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
